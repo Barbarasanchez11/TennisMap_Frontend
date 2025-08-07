@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -12,47 +13,47 @@ export default function Navbar() {
     <nav className='navbar'>
       <div className='navbar-container'>
         <div className='navbar-brand'>
-          <a href='/' className='navbar-logo'>
+          <Link to='/' className='navbar-logo'>
             TennisMap
-          </a>
+          </Link>
         </div>
 
         <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
           <ul className='navbar-nav'>
             <li className='nav-item'>
-              <a href='/' className='nav-link'>
+              <Link to='/' className='nav-link'>
                 Inicio
-              </a>
+              </Link>
             </li>
             <li className='nav-item'>
-              <a href='/jugadores' className='nav-link'>
+              <Link to='/players' className='nav-link'>
                 Jugadores
-              </a>
+              </Link>
             </li>
             <li className='nav-item'>
-              <a href='/torneos' className='nav-link'>
+              <Link to='/tournaments' className='nav-link'>
                 Torneos
-              </a>
+              </Link>
             </li>
             <li className='nav-item'>
-              <a href='/clubes' className='nav-link'>
+              <Link to='/clubs' className='nav-link'>
                 Clubes
-              </a>
+              </Link>
             </li>
             <li className='nav-item'>
-              <a href='/mapa' className='nav-link'>
+              <Link to='/map' className='nav-link'>
                 Mapa
-              </a>
+              </Link>
             </li>
             <li className='nav-item'>
-              <a href='/noticias' className='nav-link'>
+              <Link to='/news' className='nav-link'>
                 Noticias
-              </a>
+              </Link>
             </li>
             <li className='nav-item'>
-              <a href='/contacto' className='nav-link'>
+              <Link to='/contact' className='nav-link'>
                 Contacto
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

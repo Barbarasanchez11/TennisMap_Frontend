@@ -1,0 +1,316 @@
+.player-card {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.player-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.player-card.expanded {
+  height: auto;
+  min-height: 500px;
+}
+
+.card-front {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #90ee90 0%, #32cd32 50%, #228b22 100%);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  z-index: 2;
+}
+
+.player-image-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 3;
+  max-height: 60%;
+}
+
+.player-image-container img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.player-card:hover .player-image-container img {
+  transform: scale(1.05);
+}
+
+.player-status {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 4;
+}
+
+.status-active {
+  color: #28a745;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.status-inactive {
+  color: #6c757d;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.ranking-badge {
+  position: absolute;
+  bottom: 100px;
+  left: 20px;
+  background: linear-gradient(135deg, #dc143c, #b22222);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 2rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(220, 20, 60, 0.4);
+  z-index: 4;
+}
+
+.player-name-badge {
+  position: absolute;
+  bottom: 50px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #2c3e50;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 4;
+}
+
+.tennis-label {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  color: #8b4513;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+.card-details-toggle {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 4;
+}
+
+.card-details-toggle:hover {
+  background: #ffffff;
+  transform: scale(1.1);
+}
+
+.toggle-icon {
+  font-size: 18px;
+  color: #2c3e50;
+  transition: transform 0.3s ease;
+}
+
+.player-card.expanded .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.card-back {
+  background: linear-gradient(135deg, #90ee90 0%, #32cd32 100%);
+  padding: 25px;
+  border-top: 3px solid #228b22;
+}
+
+.back-content {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.player-info-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 8px;
+  border-left: 4px solid #28a745;
+}
+
+.info-label {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.9rem;
+}
+
+.player-bio {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #2c3e50;
+  border-left: 4px solid #2196f3;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.social-icon {
+  font-size: 1.8rem;
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 480px) {
+  .player-card {
+    height: 350px;
+  }
+
+  .player-image-container img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .ranking-badge {
+    font-size: 1.5rem;
+    padding: 10px 16px;
+  }
+
+  .player-name-badge {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+
+  .tennis-label {
+    font-size: 2rem;
+  }
+
+  .player-info-section {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .player-card {
+    height: 450px;
+  }
+
+  .player-image-container img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .ranking-badge {
+    font-size: 2.2rem;
+    padding: 15px 25px;
+  }
+
+  .player-name-badge {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .tennis-label {
+    font-size: 2.8rem;
+  }
+}
