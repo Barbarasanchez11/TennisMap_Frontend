@@ -61,12 +61,37 @@
 
 /* Opción A - Verde Wimbledon */
 .wimbledon-theme .player-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f0f8f0 50%, #006633 100%);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(240, 248, 240, 0.2) 50%,
+      rgba(0, 102, 51, 0.3) 100%
+    ),
+    url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNszdQ6Ct8sWvkcJopDk-YuDlHV2vOIzkOUw&s');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: soft-light;
+  box-shadow:
+    0 20px 40px rgba(0, 102, 51, 0.2),
+    0 8px 16px rgba(0, 102, 51, 0.1);
+}
+
+.wimbledon-theme .left-section {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: none;
+  border-right: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.wimbledon-theme .right-section {
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .wimbledon-theme .vertical-surname {
   color: #ffd700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
+  font-size: 5rem;
 }
 
 .wimbledon-theme .season-year {
@@ -78,19 +103,25 @@
 }
 
 .wimbledon-theme .stats-label {
-  color: #2d5016;
+  color: #000000;
 }
 
 .wimbledon-theme .stat-label {
-  color: #2d5016;
+  color: #000000;
 }
 
 .wimbledon-theme .player-info-top {
-  color: #2d5016;
+  color: #000000;
+}
+
+.wimbledon-theme .stats-section {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  backdrop-filter: none;
 }
 
 .wimbledon-theme .player-status {
-  background: linear-gradient(135deg, #ffffff, #f0f8f0);
+  background: rgba(255, 255, 255, 0.95);
   border: 2px solid #006633;
 }
 
@@ -102,14 +133,61 @@
   color: #8b9a8b;
 }
 
+.wimbledon-theme .tennis-court-lines {
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 45%,
+      rgba(255, 215, 0, 0.15) 45%,
+      rgba(255, 215, 0, 0.15) 55%,
+      transparent 55%,
+      transparent 100%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(255, 215, 0, 0.08) 40%,
+      rgba(255, 215, 0, 0.08) 60%,
+      transparent 60%,
+      transparent 100%
+    );
+}
+
 /* Opción B - Tierra Batida */
 .clay-theme .player-card {
-  background: linear-gradient(135deg, #ffffff 0%, #fff8f0 50%, #d2691e 100%);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 248, 240, 0.2) 50%,
+      rgba(210, 105, 30, 0.3) 100%
+    ),
+    url('https://www.qualitysportinstalacionesdeportivas.com/wp-content/uploads/2019/09/pista-de-tenis-de-tierra-batida.jpg');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: soft-light;
+  box-shadow:
+    0 20px 40px rgba(210, 105, 30, 0.2),
+    0 8px 16px rgba(210, 105, 30, 0.1);
+}
+
+.clay-theme .left-section {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: none;
+  border-right: 1px solid rgba(139, 69, 19, 0.3);
+}
+
+.clay-theme .right-section {
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .clay-theme .vertical-surname {
   color: #8b4513;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
+  font-size: 5rem;
 }
 
 .clay-theme .season-year {
@@ -121,19 +199,25 @@
 }
 
 .clay-theme .stats-label {
-  color: #8b4513;
+  color: #000000;
 }
 
 .clay-theme .stat-label {
-  color: #8b4513;
+  color: #000000;
 }
 
 .clay-theme .player-info-top {
-  color: #8b4513;
+  color: #000000;
+}
+
+.clay-theme .stats-section {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(139, 69, 19, 0.4);
+  backdrop-filter: none;
 }
 
 .clay-theme .player-status {
-  background: linear-gradient(135deg, #ffffff, #fff8f0);
+  background: rgba(255, 255, 255, 0.95);
   border: 2px solid #d2691e;
 }
 
@@ -143,6 +227,28 @@
 
 .clay-theme .status-inactive {
   color: #a67c52;
+}
+
+.clay-theme .tennis-court-lines {
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 45%,
+      rgba(139, 69, 19, 0.15) 45%,
+      rgba(139, 69, 19, 0.15) 55%,
+      transparent 55%,
+      transparent 100%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(139, 69, 19, 0.08) 40%,
+      rgba(139, 69, 19, 0.08) 60%,
+      transparent 60%,
+      transparent 100%
+    );
 }
 
 @media (max-width: 768px) {
