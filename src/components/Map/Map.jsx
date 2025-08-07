@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import './Map.css';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -20,10 +21,5 @@ export default function Map() {
     return () => map.remove();
   }, []);
 
-  return (
-    <div
-      ref={mapContainer}
-      style={{ width: '100%', height: '100vh', border: '2px solid red' }}
-    />
-  );
+  return <div ref={mapContainer} className='map-container' />;
 }

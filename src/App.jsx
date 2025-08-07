@@ -1,9 +1,10 @@
 import Map from './components/Map/Map';
-import './App.css';
+import './styles/reset.css';
+import './styles/App.css';
 
 function App() {
   return (
-    <div style={{ width: '100%', height: '100vh' }}>
+    <div className='app-container'>
       <Map />
     </div>
   );
