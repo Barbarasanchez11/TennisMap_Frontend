@@ -19,7 +19,6 @@
 }
 
 .left-section {
- 
   width: 40%;
   height: 100%;
   padding: 20px 15px;
@@ -36,13 +35,53 @@
   z-index: 1;
 }
 
+.player-info-top {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 0.7rem;
+  color: #6c757d;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  z-index: 10;
+}
 
+.player-status {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 15;
+}
+
+.status-active {
+  color: #28a745;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.status-inactive {
+  color: #6c757d;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 .vertical-surname {
   position: absolute;
   left: 15px;
   bottom: 20px;
   writing-mode: vertical-rl;
+  transform: rotate(180deg);
   text-orientation: mixed;
   color: #ff6600;
   font-size: 3.5rem;
@@ -53,10 +92,35 @@
   z-index: 5;
 }
 
-.stats-section {
+.team-logo {
   position: absolute;
   left: 15px;
-  top: 80px;
+  bottom: 80px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.tennis-icon {
+  font-size: 1.5rem;
+}
+
+.sponsor-logo {
+  position: absolute;
+  left: 15px;
+  bottom: 50px;
+  z-index: 10;
+}
+
+
+
+.stats-section {
+  position: absolute;
+  left: 34px;
+  top: 10px;
   z-index: 10;
 }
 

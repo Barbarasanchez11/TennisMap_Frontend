@@ -29,7 +29,18 @@ export default function PlayerCard({ player }) {
     <div className='player-card'>
       <div className='card-container'>
         <div className='left-section'>
-         
+          <div className='player-info-top'>
+            {player.firstName} {player.lastName} // {player.nationality} //{' '}
+            {player.gender === 'male' ? 'ATP' : 'WTA'}
+          </div>
+
+          <div className='player-status'>
+            {player.isActive ? (
+              <span className='status-active'>●</span>
+            ) : (
+              <span className='status-inactive'>○</span>
+            )}
+          </div>
 
           <div className='vertical-surname'>{player.lastName}</div>
 
