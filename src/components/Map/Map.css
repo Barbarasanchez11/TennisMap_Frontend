@@ -1,5 +1,17 @@
 .map-container {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 60px);
   border: 2px solid red;
+}
+
+@media (min-width: 768px) {
+  .map-container {
+    height: calc(100vh - 65px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .map-container {
+    height: calc(100vh - 70px);
+  }
 }
