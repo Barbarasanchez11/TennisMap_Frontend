@@ -54,11 +54,6 @@
   .players-header p {
     font-size: 1rem;
   }
-
-  .players-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
 }
 
 @media (min-width: 768px) {
@@ -76,17 +71,5 @@
 
   .players-header p {
     font-size: 1.2rem;
-  }
-
-  .players-grid {
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 30px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .players-grid {
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    gap: 35px;
   }
 }
