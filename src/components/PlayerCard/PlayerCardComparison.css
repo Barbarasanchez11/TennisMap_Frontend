@@ -1,38 +1,16 @@
 .card-comparison {
-  padding: 40px 20px;
+  padding: 20px 0px;
   width: 100%;
   margin: 0 auto;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   min-height: 100vh;
 }
 
-.comparison-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.comparison-header h2 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #2c3e50;
-  margin-bottom: 10px;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.comparison-header p {
-  font-size: 1.1rem;
-  color: #6c757d;
-  margin: 0;
-}
-
 .cards-container {
   display: flex;
   gap: 40px;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   max-width: 900px;
   margin: 0 auto;
@@ -42,15 +20,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-}
-
-.card-option h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #2c3e50;
-  margin: 0;
-  text-align: center;
 }
 
 .player-card {
@@ -61,20 +30,27 @@
 
 /* Opción A - Verde Wimbledon */
 .wimbledon-theme .player-card {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(240, 248, 240, 0.2) 50%,
-      rgba(0, 102, 51, 0.3) 100%
-    ),
-    url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNszdQ6Ct8sWvkcJopDk-YuDlHV2vOIzkOUw&s');
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(240, 248, 240, 0.2) 50%, rgba(0, 102, 51, 0.3) 100%);
+  box-shadow: 
+    0 20px 40px rgba(0, 102, 51, 0.2),
+    0 8px 16px rgba(0, 102, 51, 0.1);
+}
+
+.wimbledon-theme .player-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNszdQ6Ct8sWvkcJopDk-YuDlHV2vOIzkOUw&s');
   background-size: cover;
   background-position: center;
   background-blend-mode: soft-light;
-  box-shadow:
-    0 20px 40px rgba(0, 102, 51, 0.2),
-    0 8px 16px rgba(0, 102, 51, 0.1);
+  filter: blur(1px) brightness(0.8);
+  opacity: 0.8; 
+  z-index: -1;
 }
 
 .wimbledon-theme .left-section {
@@ -89,17 +65,17 @@
 }
 
 .wimbledon-theme .vertical-surname {
-  color: #ffd700;
+  color: #FFD700;
   text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
   font-size: 5rem;
 }
 
 .wimbledon-theme .season-year {
-  color: #ffd700;
+  color: #FFD700;
 }
 
 .wimbledon-theme .stat-number {
-  color: #ffd700;
+  color: #FFD700;
 }
 
 .wimbledon-theme .stats-label {
@@ -134,43 +110,34 @@
 }
 
 .wimbledon-theme .tennis-court-lines {
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 45%,
-      rgba(255, 215, 0, 0.15) 45%,
-      rgba(255, 215, 0, 0.15) 55%,
-      transparent 55%,
-      transparent 100%
-    ),
-    linear-gradient(
-      0deg,
-      transparent 0%,
-      transparent 40%,
-      rgba(255, 215, 0, 0.08) 40%,
-      rgba(255, 215, 0, 0.08) 60%,
-      transparent 60%,
-      transparent 100%
-    );
+  background: 
+    linear-gradient(90deg, transparent 0%, transparent 45%, rgba(255, 215, 0, 0.15) 45%, rgba(255, 215, 0, 0.15) 55%, transparent 55%, transparent 100%),
+    linear-gradient(0deg, transparent 0%, transparent 40%, rgba(255, 215, 0, 0.08) 40%, rgba(255, 215, 0, 0.08) 60%, transparent 60%, transparent 100%);
 }
 
 /* Opción B - Tierra Batida */
 .clay-theme .player-card {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 248, 240, 0.2) 50%,
-      rgba(210, 105, 30, 0.3) 100%
-    ),
-    url('https://www.qualitysportinstalacionesdeportivas.com/wp-content/uploads/2019/09/pista-de-tenis-de-tierra-batida.jpg');
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 248, 240, 0.2) 50%, rgba(210, 105, 30, 0.3) 100%);
+  box-shadow: 
+    0 20px 40px rgba(210, 105, 30, 0.2),
+    0 8px 16px rgba(210, 105, 30, 0.1);
+}
+
+.clay-theme .player-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://www.qualitysportinstalacionesdeportivas.com/wp-content/uploads/2019/09/pista-de-tenis-de-tierra-batida.jpg');
   background-size: cover;
   background-position: center;
   background-blend-mode: soft-light;
-  box-shadow:
-    0 20px 40px rgba(210, 105, 30, 0.2),
-    0 8px 16px rgba(210, 105, 30, 0.1);
+  filter: blur(1px) brightness(0.8);
+  opacity: 0.9; 
+  z-index: -1;
 }
 
 .clay-theme .left-section {
@@ -185,17 +152,17 @@
 }
 
 .clay-theme .vertical-surname {
-  color: #8b4513;
+  color: #8B4513;
   text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
   font-size: 5rem;
 }
 
 .clay-theme .season-year {
-  color: #8b4513;
+  color: #8B4513;
 }
 
 .clay-theme .stat-number {
-  color: #8b4513;
+  color: #8B4513;
 }
 
 .clay-theme .stats-label {
@@ -218,11 +185,11 @@
 
 .clay-theme .player-status {
   background: rgba(255, 255, 255, 0.95);
-  border: 2px solid #d2691e;
+  border: 2px solid #D2691E;
 }
 
 .clay-theme .status-active {
-  color: #d2691e;
+  color: #D2691E;
 }
 
 .clay-theme .status-inactive {
@@ -230,25 +197,9 @@
 }
 
 .clay-theme .tennis-court-lines {
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 45%,
-      rgba(139, 69, 19, 0.15) 45%,
-      rgba(139, 69, 19, 0.15) 55%,
-      transparent 55%,
-      transparent 100%
-    ),
-    linear-gradient(
-      0deg,
-      transparent 0%,
-      transparent 40%,
-      rgba(139, 69, 19, 0.08) 40%,
-      rgba(139, 69, 19, 0.08) 60%,
-      transparent 60%,
-      transparent 100%
-    );
+  background: 
+    linear-gradient(90deg, transparent 0%, transparent 45%, rgba(139, 69, 19, 0.15) 45%, rgba(139, 69, 19, 0.15) 55%, transparent 55%, transparent 100%),
+    linear-gradient(0deg, transparent 0%, transparent 40%, rgba(139, 69, 19, 0.08) 40%, rgba(139, 69, 19, 0.08) 60%, transparent 60%, transparent 100%);
 }
 
 @media (max-width: 768px) {
@@ -258,17 +209,9 @@
     gap: 30px;
     max-width: 100%;
   }
-
+  
   .player-card {
     width: 350px;
     height: 525px;
-  }
-
-  .comparison-header h2 {
-    font-size: 2rem;
-  }
-
-  .card-option h3 {
-    font-size: 1.3rem;
   }
 }
