@@ -42,29 +42,21 @@ export default function PlayerCard({ player }) {
             )}
           </div>
 
-          <div className='vertical-surname'>{player.lastName}</div>
-
           <div className='stats-section'>
-            <div className='season-year'>24/25</div>
-            <div className='stats-label'>Season Stats</div>
+            <div className='season-year'>22 GRAND SLAMS</div>
+            <div className='stats-label'>Career Achievements</div>
             <div className='stats-grid'>
               <div className='stat-item'>
-                <span className='stat-number'>
-                  {formatPoints(player.points || 0)}
-                </span>
-                <span className='stat-label'>PTS</span>
+                <span className='stat-number'>209 WEEKS #1</span>
+                <span className='stat-label'>WORLD RANKING</span>
               </div>
               <div className='stat-item'>
-                <span className='stat-number'>
-                  {getHandText(player.dominantHand)}
-                </span>
-                <span className='stat-label'>HAND</span>
+                <span className='stat-number'>92 TÍTULOS ATP</span>
+                <span className='stat-label'>TOURNAMENTS</span>
               </div>
               <div className='stat-item'>
-                <span className='stat-number'>
-                  {calculateAge(player.dateOfBirth)}
-                </span>
-                <span className='stat-label'>AGE</span>
+                <span className='stat-number'>83.2% WIN RATE</span>
+                <span className='stat-label'>SUCCESS RATE</span>
               </div>
             </div>
           </div>
@@ -90,7 +82,11 @@ export default function PlayerCard({ player }) {
               }}
             />
           </div>
+
+          <div className='tennis-court-lines'></div>
         </div>
+
+        <div className='vertical-surname'>{player.lastName}</div>
       </div>
     </div>
   );
