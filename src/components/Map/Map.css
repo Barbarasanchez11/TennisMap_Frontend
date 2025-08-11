@@ -1,7 +1,6 @@
 .map-component {
   width: 100%;
   height: calc(100vh - 60px);
-  border: 2px solid red;
 }
 
 @media (min-width: 768px) {
@@ -16,33 +15,10 @@
   }
 }
 
-.tournament-marker {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  cursor: pointer;
-}
-
-.tournament-marker.status-ongoing {
-  background-color: #00ff00;
-}
-
-.tournament-marker.status-finished {
-  background-color: #ff0000;
-}
-
-.tournament-marker.status-upcoming {
-  background-color: #0000ff;
-}
-
-.tournament-marker.status-default {
-  background-color: #666666;
-}
-
 .tournament-popup {
-  padding: 10px;
+  padding: 12px;
+  max-width: 250px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .tournament-name {
@@ -50,18 +26,21 @@
   color: #333;
   font-size: 16px;
   font-weight: 600;
+  line-height: 1.2;
 }
 
 .tournament-date {
-  margin: 5px 0;
+  margin: 4px 0;
   color: #666;
   font-size: 14px;
+  line-height: 1.3;
 }
 
 .tournament-status {
-  margin: 5px 0;
+  margin: 4px 0;
   color: #666;
   font-size: 14px;
+  line-height: 1.3;
 }
 
 .status-text {
@@ -69,15 +48,15 @@
 }
 
 .status-text.status-ongoing {
-  color: #00ff00;
+  color: #00aa00;
 }
 
 .status-text.status-finished {
-  color: #ff0000;
+  color: #cc0000;
 }
 
 .status-text.status-upcoming {
-  color: #0000ff;
+  color: #0066cc;
 }
 
 .status-text.status-default {

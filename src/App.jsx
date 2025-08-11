@@ -14,12 +14,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/players' element={<Players />} />
-            <Route
-              path='/tournaments'
-              element={<div>Torneos - Próximamente</div>}
-            />
             <Route path='/clubs' element={<div>Clubes - Próximamente</div>} />
-            <Route path='/map' element={<Home />} />
             <Route path='/news' element={<div>Noticias - Próximamente</div>} />
             <Route
               path='/contact'

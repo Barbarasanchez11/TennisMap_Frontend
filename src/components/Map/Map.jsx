@@ -1,10 +1,9 @@
 import { useEffect, useRef } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import { Loader } from '@googlemaps/js-api-loader';
 import { tournamentsData } from '../../data/tournamentsData';
 import './Map.css';
 
-mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
+const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 const getTournamentStatus = (startDate, endDate) => {
   const today = new Date();
@@ -25,13 +24,7 @@ const getStatusLabel = (statusKey) => {
   return labels[statusKey] || 'Desconocido';
 };
 
-const createMarkerElement = (statusKey) => {
-  const element = document.createElement('div');
-  element.className = `tournament-marker status-${statusKey}`;
-  return element;
-};
-
-const createPopupHTML = (tournament, statusKey) => {
+const createInfoWindowContent = (tournament, statusKey) => {
   const label = getStatusLabel(statusKey);
   return `
     <div class="tournament-popup">
@@ -49,11 +42,29 @@ const createPopupHTML = (tournament, statusKey) => {
 const addTournamentMarkers = (map, tournaments) => {
   tournaments.forEach((tournament) => {
     const statusKey = getTournamentStatus(tournament.startDate, tournament.endDate);
+    
+    const marker = new google.maps.Marker({
+      position: { lat: tournament.location.lat, lng: tournament.location.lng },
+      map: map,
+      title: tournament.name,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 8,
+        fillColor: statusKey === 'ongoing' ? '#00ff00' : 
+                   statusKey === 'finished' ? '#ff0000' : '#0000ff',
+        fillOpacity: 1,
+        strokeColor: '#ffffff',
+        strokeWeight: 2
+      }
+    });
 
-    const marker = new mapboxgl.Marker(createMarkerElement(statusKey))
-      .setLngLat([tournament.location.lng, tournament.location.lat])
-      .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(createPopupHTML(tournament, statusKey)))
-      .addTo(map);
+    const infoWindow = new google.maps.InfoWindow({
+      content: createInfoWindowContent(tournament, statusKey)
+    });
+
+    marker.addListener('click', () => {
+      infoWindow.open(map, marker);
+    });
   });
 };
 
@@ -61,17 +72,31 @@ export default function Map() {
   const mapContainer = useRef(null);
 
   useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-74.006, 40.7128],
-      zoom: 2,
+    const loader = new Loader({
+      apiKey: GOOGLE_MAPS_API_KEY,
+      version: 'weekly',
+      libraries: ['places']
     });
 
-    map.addControl(new mapboxgl.NavigationControl());
-    addTournamentMarkers(map, tournamentsData);
+    loader.load().then(() => {
+      const map = new google.maps.Map(mapContainer.current, {
+        center: { lat: 0, lng: 0 },
+        zoom: 2,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true,
+        zoomControl: true
+      });
 
-    return () => map.remove();
+      addTournamentMarkers(map, tournamentsData);
+    }).catch((error) => {
+      console.error('Error loading Google Maps:', error);
+    });
+
+    return () => {
+      // Cleanup if needed
+    };
   }, []);
 
   return <div ref={mapContainer} className="map-component" />;
