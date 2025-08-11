@@ -8,7 +8,7 @@ export default function Home() {
         <h1>Bienvenido a TennisMap</h1>
         <p>Descubre el mundo del tenis en tiempo real</p>
       </div>
-      <div className='map-container'>
+      <div className='map-wrapper'>
         <Map />
       </div>
     </div>
