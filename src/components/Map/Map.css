@@ -1,17 +1,85 @@
-.map-container {
+.map-component {
   width: 100%;
   height: calc(100vh - 60px);
   border: 2px solid red;
 }
 
 @media (min-width: 768px) {
-  .map-container {
+  .map-component {
     height: calc(100vh - 65px);
   }
 }
 
 @media (min-width: 1024px) {
-  .map-container {
+  .map-component {
     height: calc(100vh - 70px);
   }
+}
+
+.tournament-marker {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+.tournament-marker.status-ongoing {
+  background-color: #00ff00;
+}
+
+.tournament-marker.status-finished {
+  background-color: #ff0000;
+}
+
+.tournament-marker.status-upcoming {
+  background-color: #0000ff;
+}
+
+.tournament-marker.status-default {
+  background-color: #666666;
+}
+
+.tournament-popup {
+  padding: 10px;
+}
+
+.tournament-name {
+  margin: 0 0 8px 0;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tournament-date {
+  margin: 5px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.tournament-status {
+  margin: 5px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.status-text {
+  font-weight: bold;
+}
+
+.status-text.status-ongoing {
+  color: #00ff00;
+}
+
+.status-text.status-finished {
+  color: #ff0000;
+}
+
+.status-text.status-upcoming {
+  color: #0000ff;
+}
+
+.status-text.status-default {
+  color: #666666;
 }
