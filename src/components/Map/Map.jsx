@@ -5,6 +5,11 @@ import './Map.css';
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
+// Temporary debug logs
+console.log('Environment variables:', import.meta.env);
+console.log('Google Maps API Key:', GOOGLE_MAPS_API_KEY);
+console.log('API Key length:', GOOGLE_MAPS_API_KEY?.length);
+
 const getTournamentStatus = (startDate, endDate) => {
   const today = new Date();
   const start = new Date(startDate);
@@ -43,6 +48,7 @@ const addTournamentMarkers = (map, tournaments) => {
   tournaments.forEach((tournament) => {
     const statusKey = getTournamentStatus(tournament.startDate, tournament.endDate);
     
+    // Using standard markers instead of advanced markers to avoid billing issues
     const marker = new google.maps.Marker({
       position: { lat: tournament.location.lat, lng: tournament.location.lng },
       map: map,
@@ -72,6 +78,12 @@ export default function Map() {
   const mapContainer = useRef(null);
 
   useEffect(() => {
+    if (!GOOGLE_MAPS_API_KEY) {
+      console.error('Google Maps API key not configured. Create a .env file with VITE_GOOGLE_MAPS_API_KEY');
+      console.error('Current API key value:', GOOGLE_MAPS_API_KEY);
+      return;
+    }
+
     const loader = new Loader({
       apiKey: GOOGLE_MAPS_API_KEY,
       version: 'weekly',
