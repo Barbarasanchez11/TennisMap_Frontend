@@ -48,7 +48,7 @@ npm run dev
 - Los marcadores de torneos deberían aparecer
 - Los popups deberían funcionar al hacer clic
 
-## 🆘 Si hay problemas
+## Si hay problemas
 1. Verifica que la API key esté correctamente copiada
 2. Asegúrate de que las APIs estén habilitadas
 3. Revisa las restricciones de la API key
