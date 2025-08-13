@@ -31,18 +31,8 @@ export default function Navbar() {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link to='/tournaments' className='nav-link'>
-                Torneos
-              </Link>
-            </li>
-            <li className='nav-item'>
               <Link to='/clubs' className='nav-link'>
                 Clubes
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link to='/map' className='nav-link'>
-                Mapa
               </Link>
             </li>
             <li className='nav-item'>

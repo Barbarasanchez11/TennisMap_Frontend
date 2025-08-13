@@ -1,78 +1,54 @@
-import { useEffect, useRef } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import { tournamentsData } from '../../data/tournamentsData';
+import { useEffect, useRef, useState } from 'react';
+import { initMapWithLoader } from '../../utils/mapUtils';
+import { getTournamentStatus, getStatusLabel } from '../../utils/tournamentHelpers';
 import './Map.css';
 
-mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
-
-const getTournamentStatus = (startDate, endDate) => {
-  const today = new Date();
-  const start = new Date(startDate);
-  const end = new Date(endDate);
-
-  if (today >= start && today <= end) return 'ongoing';
-  if (today < start) return 'upcoming';
-  return 'finished';
-};
-
-const getStatusLabel = (statusKey) => {
-  const labels = {
-    ongoing: 'En curso',
-    finished: 'Finalizado',
-    upcoming: 'Próximo'
-  };
-  return labels[statusKey] || 'Desconocido';
-};
-
-const createMarkerElement = (statusKey) => {
-  const element = document.createElement('div');
-  element.className = `tournament-marker status-${statusKey}`;
-  return element;
-};
-
-const createPopupHTML = (tournament, statusKey) => {
-  const label = getStatusLabel(statusKey);
-  return `
-    <div class="tournament-popup">
-      <h3 class="tournament-name">${tournament.name}</h3>
-      <p class="tournament-date">Inicio: ${new Date(tournament.startDate).toLocaleDateString('es-ES')}</p>
-      <p class="tournament-date">Fin: ${new Date(tournament.endDate).toLocaleDateString('es-ES')}</p>
-      <p class="tournament-status">
-        Estado: 
-        <span class="status-text status-${statusKey}">${label}</span>
-      </p>
-    </div>
-  `;
-};
-
-const addTournamentMarkers = (map, tournaments) => {
-  tournaments.forEach((tournament) => {
-    const statusKey = getTournamentStatus(tournament.startDate, tournament.endDate);
-
-    const marker = new mapboxgl.Marker(createMarkerElement(statusKey))
-      .setLngLat([tournament.location.lng, tournament.location.lat])
-      .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(createPopupHTML(tournament, statusKey)))
-      .addTo(map);
-  });
-};
+const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 export default function Map() {
-  const mapContainer = useRef(null);
+  const mapRef = useRef(null);
+  const [selectedTournament, setSelectedTournament] = useState(null);
 
   useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-74.006, 40.7128],
-      zoom: 2,
-    });
+    if (!GOOGLE_MAPS_API_KEY) {
+      console.error('Google Maps API key not configured');
+      return;
+    }
 
-    map.addControl(new mapboxgl.NavigationControl());
-    addTournamentMarkers(map, tournamentsData);
-
-    return () => map.remove();
+    initMapWithLoader(mapRef.current, setSelectedTournament)
+      .catch(error => {
+        console.error('Failed to initialize map:', error);
+      });
   }, []);
 
-  return <div ref={mapContainer} className="map-component" />;
+  if (!GOOGLE_MAPS_API_KEY) {
+    return <div className="map-component">API key not configured</div>;
+  }
+
+  return (
+    <div className="map-component">
+      <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
+      
+      {selectedTournament && (
+        <div className="tournament-info-window">
+          <button className="info-window-close" onClick={() => setSelectedTournament(null)}>×</button>
+          <div className="tournament-popup">
+            <h3 className="tournament-name">{selectedTournament.name}</h3>
+            <p className="tournament-date">
+              Inicio: {new Date(selectedTournament.startDate).toLocaleDateString('es-ES')}
+            </p>
+            <p className="tournament-date">
+              Fin: {new Date(selectedTournament.endDate).toLocaleDateString('es-ES')}
+            </p>
+            <p className="tournament-status">
+              Estado: 
+              <span className={`status-text status-${getTournamentStatus(selectedTournament.startDate, selectedTournament.endDate)}`}>
+                {getStatusLabel(getTournamentStatus(selectedTournament.startDate, selectedTournament.endDate))}
+              </span>
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
